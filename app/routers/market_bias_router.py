@@ -26,7 +26,7 @@ async def get_market_bias(bias_id: int, db: AsyncSession = Depends(get_db)):
 
 @router.patch("/{bias_id}")
 async def update_market_bias(bias_id: int, data: MarketBiasCreate, db: AsyncSession = Depends(get_db)):
-    return await market_bias_service.update_market_bias(db, bias_id, data)
+    return await market_bias_service.update_market_bias(db, bias_id, data.model_dump())
 
 @router.delete("/{bias_id}")
 async def delete_market_bias(bias_id: int, db: AsyncSession = Depends(get_db)):

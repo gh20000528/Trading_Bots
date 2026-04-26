@@ -4,9 +4,9 @@ from app.models.signal import Signal
 
 async def create_signal(db: AsyncSession, data: dict):
     signal = Signal(**data)
-    db.app(signal)
+    db.add(signal)
     await db.commit()
-    await db.refresh(singal)
+    await db.refresh(signal)
     return signal
 
 async def get_signals(db: AsyncSession):
@@ -18,7 +18,7 @@ async def get_signal(db: AsyncSession, signal_id: int):
     return result.scalar_one_or_none()
 
 async def update_signal_status(db: AsyncSession, signal_id: int, status: str):
-    signal = await get_signal(db, siganl_id)
+    signal = await get_signal(db, signal_id)
     if signal is None:
         return None
     signal.status = status

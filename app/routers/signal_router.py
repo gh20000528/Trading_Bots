@@ -18,7 +18,7 @@ async def list_signal(db: AsyncSession = Depends(get_db)):
     return await signal_service.get_signals(db)
 
 @router.get("/{signal_id}")
-async def get_signal(signal_id: int, deb: AsyncSession = Depends(get_db)):
+async def get_signal(signal_id: int, db: AsyncSession = Depends(get_db)):
     return await signal_service.get_signal(db, signal_id)
 
 @router.patch("/{signal_id}")

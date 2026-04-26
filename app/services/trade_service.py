@@ -31,6 +31,6 @@ async def delete_trade(db: AsyncSession, trade_id: int):
     trade = await get_trade(db, trade_id)
     if trade is None:
         return None
-    await db.delete()
+    await db.delete(trade)
     await db.commit()
     return trade

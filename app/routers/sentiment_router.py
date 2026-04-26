@@ -15,6 +15,6 @@ async def get_sentiment(symbol: str):
             return {"error": "symbol not supported"}
         
         symbol_ccxt, symbol_binance = symbol_map[symbol]
-        result = await get_market_sentiment(symbol_ccxt, symbol_binance)
+        result = await get_market_sentiment(db, symbol_ccxt, symbol_binance)
         await save_sentiment(db, symbol, result)
-        return await get_market_sentiment(symbol_ccxt, symbol_binance)
+        return result

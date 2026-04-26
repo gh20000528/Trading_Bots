@@ -9,6 +9,7 @@ class Signal(Base):
     symbol = Column(String)
     timeframe = Column(String)
     signal_type = Column(String)
+    direction = Column(String)
     price = Column(Float)
     status = Column(String, default = "active")
     create_at = Column(DateTime, server_default=func.now())

@@ -14,7 +14,7 @@ class Trade(Base):
     stop_loss = Column(Float)
     take_profit = Column(Float)
     size = Column(Float)
-    status = Column(String, default=open)
+    status = Column(String, default="open")
     pnl = Column(Float, nullable=True)
     create_at = Column(DateTime, server_default=func.now())
     closed_at = Column(DateTime, nullable=True)
