@@ -6,6 +6,8 @@ exchange = ccxt.bingx({
     "secret": settings.bingx_secret
 })
 
+public_exchange = ccxt.bingx() 
+
 async def get_ohlcv(symbol: str, timeframe: str, limit: int = 100):
-    ohlcv = await exchange.fetch_ohlcv(symbol, timeframe, limit=limit)
+    ohlcv = await public_exchange.fetch_ohlcv(symbol, timeframe, limit=limit)
     return ohlcv

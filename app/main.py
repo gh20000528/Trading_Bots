@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from app.database import init_db
 from contextlib import asynccontextmanager
 from app.models import signal, trade, market_bias, market_sentiment
-from app.routers import signal_router, trade_router, market_bias_router, sentiment_router
+from app.routers import signal_router, trade_router, market_bias_router, sentiment_router, analysis_router
 from app.services.market_service import get_ohlcv
 from fastapi.middleware.cors import CORSMiddleware
 from app.services.market_sentiment_service import get_market_sentiment
@@ -18,6 +18,7 @@ app.include_router(signal_router.router)
 app.include_router(trade_router.router)
 app.include_router(market_bias_router.router)
 app.include_router(sentiment_router.router)
+app.include_router(analysis_router.router)
 
 
 app.add_middleware(
